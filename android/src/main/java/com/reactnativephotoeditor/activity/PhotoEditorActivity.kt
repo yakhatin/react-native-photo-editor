@@ -150,9 +150,9 @@ open class PhotoEditorActivity : AppCompatActivity(), OnPhotoEditorListener, Vie
       .into(mPhotoEditorView!!.source);
   }
 
-  private fun showLoading(message: Int) {
+  private fun showLoading(message: String) {
     mProgressDialog = ProgressDialog(this)
-    mProgressDialog!!.setMessage(message.toString())
+    mProgressDialog!!.setMessage(message)
     mProgressDialog!!.setProgressStyle(ProgressDialog.STYLE_SPINNER)
     mProgressDialog!!.setCancelable(false)
     mProgressDialog!!.show()
@@ -266,7 +266,7 @@ open class PhotoEditorActivity : AppCompatActivity(), OnPhotoEditorListener, Vie
       Manifest.permission.WRITE_EXTERNAL_STORAGE
     ) == PackageManager.PERMISSION_GRANTED
     if (hasStoragePermission || isSdkHigherThan28()) {
-      showLoading(R.string.label_saving)
+      showLoading(resources.getString(R.string.label_saving))
       val path: File = Environment.getExternalStoragePublicDirectory(
         Environment.DIRECTORY_PICTURES
       )
