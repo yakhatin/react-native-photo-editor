@@ -26,11 +26,11 @@ public class EditingToolsAdapter extends RecyclerView.Adapter<EditingToolsAdapte
 
   public EditingToolsAdapter(OnItemSelected onItemSelected) {
     mOnItemSelected = onItemSelected;
-    mToolList.add(new ToolModel("Shape", R.drawable.ic_brush, ToolType.SHAPE));
-    mToolList.add(new ToolModel("Eraser", R.drawable.ic_eraser, ToolType.ERASER));
-    mToolList.add(new ToolModel("Filter", R.drawable.ic_colorfilter, ToolType.FILTER));
-    mToolList.add(new ToolModel("Sticker", R.drawable.ic_sticker, ToolType.STICKER));
-    mToolList.add(new ToolModel("Text", R.drawable.ic_smallcaps, ToolType.TEXT));
+    mToolList.add(new ToolModel(R.string.label_shape, R.drawable.ic_brush, ToolType.SHAPE));
+    mToolList.add(new ToolModel(R.string.label_eraser, R.drawable.ic_eraser, ToolType.ERASER));
+    mToolList.add(new ToolModel(R.string.label_filter, R.drawable.ic_colorfilter, ToolType.FILTER));
+    mToolList.add(new ToolModel(R.string.label_sticker, R.drawable.ic_sticker, ToolType.STICKER));
+    mToolList.add(new ToolModel(R.string.label_text, R.drawable.ic_smallcaps, ToolType.TEXT));
   }
 
   public interface OnItemSelected {
@@ -38,11 +38,11 @@ public class EditingToolsAdapter extends RecyclerView.Adapter<EditingToolsAdapte
   }
 
   class ToolModel {
-    private String mToolName;
+    private int mToolName;
     private int mToolIcon;
     private ToolType mToolType;
 
-    ToolModel(String toolName, int toolIcon, ToolType toolType) {
+    ToolModel(int toolName, int toolIcon, ToolType toolType) {
       mToolName = toolName;
       mToolIcon = toolIcon;
       mToolType = toolType;
