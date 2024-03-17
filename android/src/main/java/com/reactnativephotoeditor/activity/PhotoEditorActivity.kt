@@ -17,7 +17,6 @@ import android.view.View
 import android.view.Window
 import android.view.WindowManager
 import android.view.animation.AnticipateOvershootInterpolator
-import android.widget.Button
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.annotation.NonNull
@@ -151,9 +150,9 @@ open class PhotoEditorActivity : AppCompatActivity(), OnPhotoEditorListener, Vie
       .into(mPhotoEditorView!!.source);
   }
 
-  private fun showLoading(message: String) {
+  private fun showLoading(message: Int) {
     mProgressDialog = ProgressDialog(this)
-    mProgressDialog!!.setMessage(message)
+    mProgressDialog!!.setMessage(message.toString())
     mProgressDialog!!.setProgressStyle(ProgressDialog.STYLE_SPINNER)
     mProgressDialog!!.setCancelable(false)
     mProgressDialog!!.show()
@@ -267,7 +266,7 @@ open class PhotoEditorActivity : AppCompatActivity(), OnPhotoEditorListener, Vie
       Manifest.permission.WRITE_EXTERNAL_STORAGE
     ) == PackageManager.PERMISSION_GRANTED
     if (hasStoragePermission || isSdkHigherThan28()) {
-      showLoading("Saving...")
+      showLoading(R.string.label_saving)
       val path: File = Environment.getExternalStoragePublicDirectory(
         Environment.DIRECTORY_PICTURES
       )
@@ -335,9 +334,9 @@ open class PhotoEditorActivity : AppCompatActivity(), OnPhotoEditorListener, Vie
   private fun showSaveDialog() {
     val builder = AlertDialog.Builder(this)
     builder.setMessage(getString(R.string.msg_save_image))
-    builder.setPositiveButton("Save") { _: DialogInterface?, _: Int -> saveImage() }
-    builder.setNegativeButton("Cancel") { dialog: DialogInterface, _: Int -> dialog.dismiss() }
-    builder.setNeutralButton("Discard") { _: DialogInterface?, _: Int -> onCancel() }
+    builder.setPositiveButton(R.string.label_save) { _: DialogInterface?, _: Int -> saveImage() }
+    builder.setNegativeButton(R.string.label_cancel) { dialog: DialogInterface, _: Int -> dialog.dismiss() }
+    builder.setNeutralButton(R.string.label_discard) { _: DialogInterface?, _: Int -> onCancel() }
     builder.create().show()
   }
 
